@@ -1,8 +1,35 @@
 namespace ProjectDealership.Models
 {
-    public class Motorcycle
+    public class Motorcycle : Vehicle
     {
-        public int Cylinders {get; set;}
-        public string Departure {get; set;}
+        private int Cylinders { get; set; }
+        private string Departure { get; set; }
+        public Motorcycle(int cylinders, string departure, string brand, string model, DateTime year, int mileage, string color, string price) : base(brand, model, year, mileage, color, price)
+        {
+            SetCylinders(cylinders);
+            SetDeparture(departure);
+        }
+        public void SetCylinders(int cylinders)
+        {
+            Cylinders = cylinders;
+        }
+        public int GetCylinders()
+        {
+            return Cylinders;
+        }
+        public void SetDeparture(string departure)
+        {
+            Departure = departure;
+        }
+        public string GetDeparture()
+        {
+            return Departure;
+        }
+         public override double CalculatePrice()
+        {
+            return 0;
+        }
+
     }
 }
+

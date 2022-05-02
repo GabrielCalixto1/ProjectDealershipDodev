@@ -1,8 +1,21 @@
 namespace ProjectDealership.Models
 {
-    public class Client
+    public class Client : Person
     {
-        public string Email {get; set;}
-        public string Telephone {get;set;}
+        private string Email { get; set; }
+        private string Telephone { get; set; }
+        public Client(string email, string name, string cpf, DateTime birthdate) : base(name, cpf, birthdate)
+        {
+            SetEmail(email);
+        }
+        public void SetEmail(string email)
+        {
+            email = email;
+        }
+        public string GetEmail()
+        {
+            return Email;
+        }
     }
+
 }
