@@ -7,7 +7,7 @@ namespace ProjectDealership.Models
         public DateTime Year {get; set;}
         public int Mileage {get; set;}
         public string Color {get; set;}
-        public string Price {get; set;}
+        public double Price {get; set;}
         public Vehicle(string brand, string model, DateTime year, int mileage, string color, string price) : base()
         {
             SetBrand(brand);
@@ -58,9 +58,13 @@ namespace ProjectDealership.Models
         {
             return Color;
         }
-        public void SetPrice(string price)
+        public void SetPrice(double price)
         {
             Price = price;
+        }
+        public double GetPrice()
+        {
+            return Price;
         }
         public virtual double CalculatePrice()
         {

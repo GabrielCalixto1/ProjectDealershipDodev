@@ -28,7 +28,11 @@ namespace ProjectDealership.Models
         }
           public override double CalculatePrice()
         {
-            return 0;
+          if(AutomaticTransmission)
+          {
+            SetPrice(GetPrice()*1.2);    
+          }
+          return GetPrice();
         }
 
     }

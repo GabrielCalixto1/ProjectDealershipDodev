@@ -14,6 +14,7 @@ namespace ProjectDealership.Models
             SetVehicle(vehicle);
             SetPaymentMethod(paymentMethod);
             SetFinalAmount(finalAmount);
+            
 
         }
         public void SetBuyer(Client buyer)
@@ -56,9 +57,13 @@ namespace ProjectDealership.Models
         {
             return FinalAmount;
         }
-        public double ApplyDiscount()
+        public double ApplyDiscount(string name, string position, string cpf, DateTime birthdate)
         {
-            return 0;
+            if (Seller.GetPosition() == "Gerente")
+            {
+                SetFinalAmount(FinalAmount * 0.95);
+            }
+            return FinalAmount; 
         }
 
     }

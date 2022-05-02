@@ -25,9 +25,15 @@ namespace ProjectDealership.Models
         {
             return Departure;
         }
-         public override double CalculatePrice()
+        public override double CalculatePrice()
         {
-            return 0;
+           var price = Cylinders * 50;
+
+            if (Departure == "Injeção eletrônica")
+            {
+             price = price + ((price /100) * 10) ;
+            }
+            return GetPrice();
         }
 
     }

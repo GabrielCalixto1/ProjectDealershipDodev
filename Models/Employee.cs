@@ -7,7 +7,7 @@ namespace ProjectDealership.Models
         {
             SetPosition(position);
         }
-        private void SetPosition(string position)
+        public void SetPosition(string position)
         {
             Position = position;
         }
