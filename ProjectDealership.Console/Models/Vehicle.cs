@@ -8,7 +8,7 @@ namespace ProjectDealership.Models
         public int Mileage {get; set;}
         public string Color {get; set;}
         public double Price {get; set;}
-        public Vehicle(string brand, string model, DateTime year, int mileage, string color, string price) : base()
+        public Vehicle(string brand, string model, DateTime year, int mileage, string color, double price) : base()
         {
             SetBrand(brand);
             SetModel(model);
