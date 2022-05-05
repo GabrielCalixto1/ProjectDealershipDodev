@@ -31,7 +31,7 @@ namespace ProjectDealership.Models
         {
             Birthdate = birthdate;
         }
-        public DateTime GetBirthDate()
+        public DateTime GetBirthdate()
         {
             return Birthdate;
         }

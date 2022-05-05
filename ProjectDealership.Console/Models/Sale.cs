@@ -57,7 +57,7 @@ namespace ProjectDealership.Models
         {
             return FinalAmount;
         }
-        public double ApplyDiscount(string name, string position, string cpf, DateTime birthdate)
+        public double DiscountApply(string name, string position, string cpf, DateTime birthdate)
         {
             if (Seller.GetPosition() == "Gerente")
             {

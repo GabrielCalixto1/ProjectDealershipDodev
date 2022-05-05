@@ -4,7 +4,7 @@ namespace ProjectDealership.Models
     {
         private int Cylinders { get; set; }
         private string Departure { get; set; }
-        public Motorcycle(int cylinders, string departure, string brand, string model, DateTime year, int mileage, string color, string price) : base(brand, model, year, mileage, color, price)
+        public Motorcycle(int cylinders, string departure, string brand, string model, DateTime year, int mileage, string color, double price) : base(brand, model, year, mileage, color, price)
         {
             SetCylinders(cylinders);
             SetDeparture(departure);
@@ -25,7 +25,7 @@ namespace ProjectDealership.Models
         {
             return Departure;
         }
-        public override double CalculatePrice()
+        public override double PriceCalculate()
         {
            var price = Cylinders * 50;
 

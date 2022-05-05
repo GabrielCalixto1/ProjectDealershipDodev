@@ -66,7 +66,7 @@ namespace ProjectDealership.Models
         {
             return Price;
         }
-        public virtual double CalculatePrice()
+        public virtual double PriceCalculate()
         {
             return 0;
         }
