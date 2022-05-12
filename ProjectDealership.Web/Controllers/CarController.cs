@@ -3,7 +3,7 @@ using ProjectDealership.Models;
 
 namespace ProjectDealership.Web.Controllers
 {
-    [ApiController]
+   [ApiController]
     [Route("Controller")]
     public class CarController : ControllerBase
     {
@@ -21,10 +21,12 @@ namespace ProjectDealership.Web.Controllers
             return Ok(Cars);
         }
         [HttpDelete]
-        public IActionResult DeleteCar(Car car)
+        public IActionResult DeleteCar(int WhatListPosition)
         {
-            Cars.RemoveRange(0, 10);
-            return Ok(Cars);
+           
+         Cars.RemoveAt(WhatListPosition); //Testing the removes
+         
+            return Ok();
         }      
-    }
+    } 
 }
