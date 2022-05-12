@@ -2,8 +2,8 @@ namespace ProjectDealership.Models
 {
     public class Car : Vehicle
     {
-        private bool AutomaticTransmission { get; set; }
-        private string Fuel { get; set; }
+        public bool AutomaticTransmission { get; set; }
+        public string Fuel { get; set; }
         public Car(bool automaticTransmission, string fuel, string brand, string model, DateTime year, int mileage, string color, double price) : base(brand, model, year, mileage, color, price)
         {
           SetAutomaticTransmission(automaticTransmission);

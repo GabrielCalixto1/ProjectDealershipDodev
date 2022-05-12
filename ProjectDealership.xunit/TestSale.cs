@@ -5,9 +5,6 @@ namespace ProjectDealership.xunit
     public class TestSale
 
     {
-        public TestSale()
-
-
 
         [Fact]
         public void TestBuyerInTheSaleClass()
