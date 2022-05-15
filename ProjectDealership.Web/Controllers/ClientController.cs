@@ -21,12 +21,11 @@ namespace ProjectDealership.Web.Controllers
             return Ok(Clients);
         }
         [HttpDelete]
-        public IActionResult DeleteClient(int WhatListPosition)
-        {
-           
-         Clients.RemoveAt(WhatListPosition); //Testing the removes
-         
-            return Ok();
-        }      
+        public IActionResult DeleteClient()
+      {                     
+            var CountClients = Clients.Count<Client>();
+            Clients.RemoveAt(CountClients -1);
+            return Ok(Clients);
+        }     
     } 
 }

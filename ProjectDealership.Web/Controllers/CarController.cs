@@ -3,16 +3,15 @@ using ProjectDealership.Models;
 
 namespace ProjectDealership.Web.Controllers
 {
-   [ApiController]
+    [ApiController]
     [Route("Controller")]
     public class CarController : ControllerBase
     {
         public static List<Car> Cars { get; set; } = new List<Car>();
-
         [HttpPost]
         public IActionResult SetCar(Car car)
-        {        
-            Cars.Add(car);      
+        {
+            Cars.Add(car);
             return Ok(Cars);
         }
         [HttpGet]
@@ -21,12 +20,11 @@ namespace ProjectDealership.Web.Controllers
             return Ok(Cars);
         }
         [HttpDelete]
-        public IActionResult DeleteCar(int WhatListPosition)
-        {
-           
-         Cars.RemoveAt(WhatListPosition); //Testing the removes
-         
-            return Ok();
-        }      
-    } 
+        public IActionResult DeleteCar()
+        {                     
+            var CountCars = Cars.Count<Car>();
+            Cars.RemoveAt(CountCars-1);
+            return Ok(Cars);
+        }
+    }
 }
