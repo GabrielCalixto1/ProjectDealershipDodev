@@ -1,3 +1,4 @@
+using ProjectDealership.Exceptions;
 namespace ProjectDealership.Models
 {
     public class Client : Person
@@ -11,7 +12,12 @@ namespace ProjectDealership.Models
         }
         public void SetEmail(string email)
         {
-            email = email;
+
+            if (EmailValidation(email))
+            {
+                Email = email;
+            }
+            throw new ValidationErrorException("Precisa conter @");
         }
         public string GetEmail()
         {
@@ -19,12 +25,33 @@ namespace ProjectDealership.Models
         }
         public void SetTelephone(string telephone)
         {
-            Telephone = telephone;
+            if (TelphoneValidation(telephone))
+            {
+                Telephone = telephone;
+            }
+            throw new ValidationErrorException("Tamanho inválido");
         }
         public string GetTelephone()
         {
             return Telephone;
         }
-    }
+        public bool TelphoneValidation(string telephone)
+        {
+            if (telephone.Length < 15 && telephone.Length > 8)
+            {
+                return true;
+            }
+            return false;
+        }
+        public bool EmailValidation(string email)
+        {
+            if (email.Contains("@"))
+            {
+                return true;
+            }
+            return false;
 
+        }
+
+    }
 }

@@ -35,6 +35,15 @@ namespace ProjectDealership.Models
             }
             return GetPrice();
         }
+               public override bool PriceValidate(double price)
+        {
+            if (price > 2000)
+            {
+                return true;
+            }
+            return false;
+        }
+     
 
     }
 }

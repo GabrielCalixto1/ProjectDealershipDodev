@@ -1,3 +1,4 @@
+using ProjectDealership.Exceptions;
 namespace ProjectDealership.Models
 {
     public class Vehicle
@@ -60,7 +61,11 @@ namespace ProjectDealership.Models
         }
         public void SetPrice(double price)
         {
-            Price = price;
+            if(PriceValidate(price))
+            {
+               Price = price; 
+            }
+            throw new ValidationErrorException("Valor inválido");
         }
         public double GetPrice()
         {
@@ -70,5 +75,23 @@ namespace ProjectDealership.Models
         {
             return 0;
         }
+            public bool YearValidation(DateTime year)
+        {
+
+            if (year > DateTime.Parse("01/01/2004") && year < DateTime.Now)
+            {
+                return true;
+            }
+            return false;
+        }
+            public virtual bool PriceValidate(double price)
+        {
+            if (price > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

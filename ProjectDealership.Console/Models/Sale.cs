@@ -65,7 +65,15 @@ namespace ProjectDealership.Models
             }
             return FinalAmount; 
         }
-
+         public bool CarValidation(double finalAmount)
+        {
+          if(finalAmount > 5000)
+          {
+            return true;
+          }
+          return false;
+        }
+       
     }
 
 }

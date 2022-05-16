@@ -35,6 +35,16 @@ namespace ProjectDealership.Models
         {
             return Birthdate;
         }
+        public bool BirthdateValidation(DateTime birthdate)
+        {
+
+            if (birthdate > DateTime.Parse("01/01/2004") && birthdate < DateTime.Now)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 
 }
