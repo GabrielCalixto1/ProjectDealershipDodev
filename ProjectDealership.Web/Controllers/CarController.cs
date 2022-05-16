@@ -1,3 +1,4 @@
+using ProjectDealership.Web.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDealership.Models;
 
@@ -7,11 +8,13 @@ namespace ProjectDealership.Web.Controllers
     [Route("Controller")]
     public class CarController : ControllerBase
     {
-        public static List<Car> Cars { get; set; } = new List<Car>();
+        public static List<CarDTO> Cars { get; set; } = new List<CarDTO>();
         [HttpPost]
-        public IActionResult SetCar(Car car)
+        public IActionResult SetCar(CarDTO carDto)
         {
-            Cars.Add(car);
+            var car = new Car(carDto.AutomaticTransmission, carDto.Fuel, carDto.Brand, carDto.Model,
+            carDto.Year, carDto.Mileage, carDto.Color, carDto.Price);
+            Cars.Add(carDto);
             return Ok(Cars);
         }
         [HttpGet]
@@ -22,7 +25,7 @@ namespace ProjectDealership.Web.Controllers
         [HttpDelete]
         public IActionResult DeleteCar()
         {                     
-            var CountCars = Cars.Count<Car>();
+            var CountCars = Cars.Count<CarDTO>();
             Cars.RemoveAt(CountCars-1);
             return Ok(Cars);
         }

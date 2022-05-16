@@ -1,3 +1,4 @@
+using ProjectDealership.Web.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDealership.Models;
 
@@ -7,12 +8,13 @@ namespace ProjectDealership.Web.Controllers
     [Route("Controller")]
     public class SaleController : ControllerBase
     {
-        public static List<Sale> Sales { get; set; } = new List<Sale>();
+        public static List<SaleDTO> Sales { get; set; } = new List<SaleDTO>();
 
         [HttpPost]
-        public IActionResult SetSale(Sale sale)
-        {        
-            Sales.Add(sale);      
+        public IActionResult SetSale(SaleDTO saleDto)
+        {   
+            var sale = new Sale(saleDto.Buyer, saleDto.Seller, saleDto.Vehicle, saleDto.PaymentMethod, saleDto.FinalAmount);     
+            Sales.Add(saleDto);      
             return Ok(Sales);
         }
         [HttpGet]
@@ -23,7 +25,7 @@ namespace ProjectDealership.Web.Controllers
         [HttpDelete]
         public IActionResult DeleteSale()
         {                     
-            var CountSales = Sales.Count<Sale>();
+            var CountSales = Sales.Count<SaleDTO>();
             Sales.RemoveAt(CountSales-1);
             return Ok(Sales);
         }    

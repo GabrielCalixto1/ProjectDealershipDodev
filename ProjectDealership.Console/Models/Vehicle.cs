@@ -9,7 +9,7 @@ namespace ProjectDealership.Models
         protected int Mileage {get; set;}
         protected string Color {get; set;}
         protected double Price {get; set;}
-        protected Vehicle(string brand, string model, DateTime year, int mileage, string color, double price)
+        public Vehicle(string brand, string model, DateTime year, int mileage, string color, double price)
         {
             SetBrand(brand);
             SetModel(model);

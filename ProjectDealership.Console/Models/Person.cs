@@ -5,7 +5,7 @@ namespace ProjectDealership.Models
         protected string Name { get; set; }
         protected string Cpf { get; set; }
         protected DateTime Birthdate { get; set; }
-        public Person(string name, string cpf, DateTime birthdate) : base()
+        public Person(string name, string cpf, DateTime birthdate)
         {
             SetName(name);
             SetCpf(cpf);
@@ -35,7 +35,7 @@ namespace ProjectDealership.Models
         {
             return Birthdate;
         }
-    
+
 
     }
 

@@ -1,3 +1,4 @@
+using ProjectDealership.Web.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDealership.Models;
 
@@ -7,12 +8,14 @@ namespace ProjectDealership.Web.Controllers
     [Route("Controller")]
     public class MotorcycleController : ControllerBase
     {
-        public static List<Motorcycle> Motorcycles { get; set; } = new List<Motorcycle>();
+        public static List<MotorcycleDTO> Motorcycles { get; set; } = new List<MotorcycleDTO>();
 
         [HttpPost]
-        public IActionResult SetMotorcycle(Motorcycle motorcycle)
-        {        
-            Motorcycles.Add(motorcycle);      
+        public IActionResult SetMotorcycle(MotorcycleDTO motorcycleDto)
+        {  
+            var motorcycle = new Motorcycle(motorcycleDto.Cylinders, motorcycleDto.Departure, motorcycleDto.Brand, 
+            motorcycleDto.Model, motorcycleDto.Year, motorcycleDto.Mileage, motorcycleDto.Color, motorcycleDto.Price);     
+            Motorcycles.Add(motorcycleDto);      
             return Ok(Motorcycles);
         }
         [HttpGet]
@@ -23,7 +26,7 @@ namespace ProjectDealership.Web.Controllers
         [HttpDelete]
         public IActionResult DeleteMotorcycle()
          {                     
-            var CountMotorcycles = Motorcycles.Count<Motorcycle>();
+            var CountMotorcycles = Motorcycles.Count<MotorcycleDTO>();
             Motorcycles.RemoveAt(CountMotorcycles-1);
             return Ok(Motorcycles);
         }    

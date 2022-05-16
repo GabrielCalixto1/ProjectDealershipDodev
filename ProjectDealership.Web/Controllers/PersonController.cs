@@ -1,3 +1,4 @@
+using ProjectDealership.Web.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDealership.Models;
 
@@ -7,12 +8,13 @@ namespace ProjectDealership.Web.Controllers
     [Route("Controller")]
     public class PersonController : ControllerBase
     {
-        public static List<Person> Persons { get; set; } = new List<Person>();
+        public static List<PersonDTO> Persons { get; set; } = new List<PersonDTO>();
 
         [HttpPost]
-        public IActionResult SetPerson(Person persons)
-        {        
-            Persons.Add(persons);      
+        public IActionResult SetPerson(PersonDTO personsDto)
+        {     
+            var person = new Person(personsDto.Name, personsDto.Cpf, personsDto.Birthdate);   
+            Persons.Add(personsDto);      
             return Ok(Persons);
         }
         [HttpGet]
@@ -23,7 +25,7 @@ namespace ProjectDealership.Web.Controllers
         [HttpDelete]
         public IActionResult DeletePerson()
           {                     
-            var CountPersons = Persons.Count<Person>();
+            var CountPersons = Persons.Count<PersonDTO>();
             Persons.RemoveAt(CountPersons-1);
             return Ok(Persons);
         } 
