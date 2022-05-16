@@ -3,13 +3,13 @@ namespace ProjectDealership.Models
 {
     public class Vehicle
     {
-        public string Brand {get; set;}
-        public string Model {get; set;}
-        public DateTime Year {get; set;}
-        public int Mileage {get; set;}
-        public string Color {get; set;}
-        public double Price {get; set;}
-        public Vehicle(string brand, string model, DateTime year, int mileage, string color, double price) : base()
+        protected string Brand {get; set;}
+        protected string Model {get; set;}
+        protected DateTime Year {get; set;}
+        protected int Mileage {get; set;}
+        protected string Color {get; set;}
+        protected double Price {get; set;}
+        protected Vehicle(string brand, string model, DateTime year, int mileage, string color, double price)
         {
             SetBrand(brand);
             SetModel(model);
