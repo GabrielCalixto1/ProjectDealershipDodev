@@ -26,6 +26,19 @@ namespace ProjectDealership.Web.Controllers
             var CountVehicles = Vehicles.Count<Vehicle>();
             Vehicles.RemoveAt(CountVehicles-1);
             return Ok(Vehicles);
-        }      
+        }  
+        [HttpGet("Price")]
+        public IActionResult SetPrice(double price)
+        {
+            try
+            {
+                var vehicle = new Vehicle("a", "a", DateTime.Today, 0, "red", price);
+                return Ok(vehicle.GetPrice);
+            }
+            catch(System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }    
     } 
 }

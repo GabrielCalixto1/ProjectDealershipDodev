@@ -3,7 +3,7 @@ using ProjectDealership.Models;
 
 namespace ProjectDealership.Web.Controllers
 {
-   [ApiController]
+    [ApiController]
     [Route("Controller")]
     public class ClientController : ControllerBase
     {
@@ -11,8 +11,8 @@ namespace ProjectDealership.Web.Controllers
 
         [HttpPost]
         public IActionResult SetClient(Client client)
-        {        
-            Clients.Add(client);      
+        {
+            Clients.Add(client);
             return Ok(Clients);
         }
         [HttpGet]
@@ -22,10 +22,34 @@ namespace ProjectDealership.Web.Controllers
         }
         [HttpDelete]
         public IActionResult DeleteClient()
-      {                     
+        {
             var CountClients = Clients.Count<Client>();
-            Clients.RemoveAt(CountClients -1);
+            Clients.RemoveAt(CountClients - 1);
             return Ok(Clients);
-        }     
-    } 
+        }
+        public IActionResult SetTelephone(string telephone)
+        {
+            try
+            {
+                var client = new Client("a", "a", "a", DateTime.Today, telephone);
+                return Ok(client.GetTelephone);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        public IActionResult SetEmail(string email)
+        {
+            try
+            {
+                var client = new Client(email, "a", "515", DateTime.Today, "telephone");
+                return Ok(client.GetEmail);
+            }
+            catch (System.Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+    }
 }
