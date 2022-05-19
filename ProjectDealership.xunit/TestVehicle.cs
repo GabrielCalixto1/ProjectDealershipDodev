@@ -1,5 +1,8 @@
 using Xunit;
 using ProjectDealership.Models;
+using System;
+using ProjectDealership.Exceptions;
+
 namespace ProjectDealership.xunit
 {
     public class TestVehicle
@@ -7,24 +10,27 @@ namespace ProjectDealership.xunit
         [Fact]
         public void TestBrandInTheVehicleClass()
         {
-            var expectedBrand = "test";
-            var vehicle = new Vehicle(expectedBrand, "RT300", System.DateTime.Now, 0, "Blue", 50000);
+            var expectedBrand = "Fiat";
+            var vehicle = CreateDefaultVehicle();
+            vehicle.SetBrand(expectedBrand);
             var currentBrand = vehicle.GetBrand();
             Assert.Equal(expectedBrand, currentBrand);
         }
         [Fact]
         public void TestModelInTheVehicleClass()
         {
-            var expectedModel = "Civic";
-            var vehicle = new Vehicle("Honda", expectedModel, System.DateTime.Now, 0, "Silver", 50000);
+            var expectedModel = "Palio";
+            var vehicle = CreateDefaultVehicle();
+            vehicle.SetModel(expectedModel);
             var currentModel = vehicle.GetModel();
             Assert.Equal(expectedModel, expectedModel);
         }
         [Fact]
         public void TestYearInTheVehicleClass()
         {
-            var expectedYear = "01/01/2000";
-            var vehicle = new Vehicle("Fiat", "Palio", System.DateTime.Parse(expectedYear), 0, "Black", 50000);
+            var expectedYear = "01/01/2007";
+            var vehicle = CreateDefaultVehicle();
+            vehicle.SetYear(expectedYear);
             var currentYear = vehicle.GetYear().ToString("dd/MM/yyyy");
             Assert.Equal(expectedYear, currentYear);
         }
@@ -32,7 +38,8 @@ namespace ProjectDealership.xunit
         public void TestMileageInTheVehicleClass()
         {
             var expectedMileage = 0;
-            var vehicle = new Vehicle("Fiat", "Uno mile", System.DateTime.Now, expectedMileage, "Red", 50000);
+            var vehicle = CreateDefaultVehicle();
+            vehicle.SetMileage(expectedMileage);
             var currentMileage = vehicle.GetMileage();
             Assert.Equal(expectedMileage, currentMileage);
         }
@@ -40,17 +47,40 @@ namespace ProjectDealership.xunit
         public void TestColorInTheVehicleClass()
         {
             var expectedColor = "Red";
-            var vehicle = new Vehicle("Mercedes Benz", "Tchala", System.DateTime.Now, 0, expectedColor, 50000);
+            var vehicle = CreateDefaultVehicle();
+            vehicle.SetColor(expectedColor);
             var currentColor = vehicle.GetColor();
             Assert.Equal(expectedColor, currentColor);
         }
         [Fact]
         public void TestPriceInTheVehicleClass()
         {
-            var expectedPrice = 500000;
-            var vehicle = new Vehicle("BMW", "BMLL", System.DateTime.Now, 0, "Gold", expectedPrice);
-            var currentPrice = vehicle.GetPrice();
+            var expectedPrice = 15000;
+            var vehicle = CreateDefaultVehicle();
+            vehicle.SetPrice(expectedPrice);
+            double currentPrice = vehicle.GetPrice();
             Assert.Equal(expectedPrice, currentPrice);
         }
+             [Fact]
+        public void VehicleMustNotHaveYearLessThan2004()
+        {
+            var expectedYear = "01/01/2000";
+            var vehicle = CreateDefaultVehicle();
+            Assert.Throws<ValidationErrorException>(() => new Vehicle("1", "1", expectedYear, 0, "1", 15000) );                
+        }
+                [Fact]
+        public void VehicleMustNotHaveYearLessThanActual()
+        {
+            var expectedYear = DateTime.Now.AddDays(2).ToString();
+            var vehicle = CreateDefaultVehicle();
+            Assert.Throws<ValidationErrorException>(() => new Vehicle("1", "1", expectedYear, 0, "1", 15000) ); 
+                     
+        }
+
+        public Vehicle CreateDefaultVehicle()
+        {
+            return new Vehicle("Honda", "Civic", "01/01/2005", 50, "Silver", 22000);
+        }
+
     }
 }

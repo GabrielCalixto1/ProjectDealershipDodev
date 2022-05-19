@@ -13,11 +13,10 @@ namespace ProjectDealership.Models
         public void SetEmail(string email)
         {
 
-            if (EmailValidation(email))
-            {
+             EmailValidation(email);
+            
                 Email = email;
-            }
-            throw new ValidationErrorException("Precisa conter @");
+          
         }
         public string GetEmail()
         {
@@ -25,23 +24,21 @@ namespace ProjectDealership.Models
         }
         public void SetTelephone(string telephone)
         {
-            if (TelphoneValidation(telephone))
-            {
+                TelephoneValidation(telephone);
                 Telephone = telephone;
-            }
-            throw new ValidationErrorException("Tamanho inválido");
+        
         }
         public string GetTelephone()
         {
             return Telephone;
         }
-        public bool TelphoneValidation(string telephone)
+        public bool TelephoneValidation(string telephone)
         {
-            if (telephone.Length < 15 && telephone.Length > 8)
+            if (telephone.Length > 8 && telephone.Length < 15)
             {
                 return true;
-            }
-            return false;
+           }
+            throw new ValidationErrorException("Precisa conter @"); 
         }
         public bool EmailValidation(string email)
         {
@@ -49,7 +46,9 @@ namespace ProjectDealership.Models
             {
                 return true;
             }
-            return false;
+
+            throw new ValidationErrorException("Telefone inválido");
+
 
         }
 

@@ -3,13 +3,13 @@ namespace ProjectDealership.Models
 {
     public class Vehicle
     {
-        protected string Brand {get; set;}
-        protected string Model {get; set;}
-        protected DateTime Year {get; set;}
-        protected int Mileage {get; set;}
-        protected string Color {get; set;}
-        protected double Price {get; set;}
-        public Vehicle(string brand, string model, DateTime year, int mileage, string color, double price)
+        protected string Brand { get; set; }
+        protected string Model { get; set; }
+        protected DateTime Year { get; set; }
+        protected int Mileage { get; set; }
+        protected string Color { get; set; }
+        protected double Price { get; set; }
+        public Vehicle(string brand, string model, string year, int mileage, string color, double price)
         {
             SetBrand(brand);
             SetModel(model);
@@ -17,7 +17,7 @@ namespace ProjectDealership.Models
             SetMileage(mileage);
             SetColor(color);
             SetPrice(price);
-        
+
         }
         public void SetBrand(string brand)
         {
@@ -35,9 +35,10 @@ namespace ProjectDealership.Models
         {
             return Model;
         }
-        public void SetYear(DateTime year)
+        public void SetYear(string year)
         {
-            Year = year;
+            YearValidation(year);
+            Year = DateTime.Parse(year);
         }
         public DateTime GetYear()
         {
@@ -61,11 +62,9 @@ namespace ProjectDealership.Models
         }
         public void SetPrice(double price)
         {
-            if(PriceValidate(price))
-            {
-               Price = price; 
-            }
-            throw new ValidationErrorException("Valor inválido");
+            PriceValidate(price);
+            Price = price;
+
         }
         public double GetPrice()
         {
@@ -75,22 +74,23 @@ namespace ProjectDealership.Models
         {
             return 0;
         }
-            public bool YearValidation(DateTime year)
+        public bool YearValidation(string year)
         {
 
-            if (year > DateTime.Parse("01/01/2004") && year < DateTime.Now)
+            var date = DateTime.Parse(year);
+            if (date >= DateTime.Parse(year) && date < DateTime.Now)
             {
                 return true;
             }
-            return false;
+            throw new ValidationErrorException("Data inválida");
         }
-            public virtual bool PriceValidate(double price)
+        public virtual bool PriceValidate(double price)
         {
-            if (price > 0)
+            if (price > 9000)
             {
                 return true;
             }
-            return false;
+            throw new ValidationErrorException("Valor inválido");
         }
 
     }

@@ -4,7 +4,7 @@ namespace ProjectDealership.Models
     {
         private int Cylinders { get; set; }
         private string Departure { get; set; }
-        public Motorcycle(int cylinders, string departure, string brand, string model, DateTime year, int mileage, string color, double price) : base(brand, model, year, mileage, color, price)
+        public Motorcycle(int cylinders, string departure, string brand, string model, string year, int mileage, string color, double price) : base(brand, model, year, mileage, color, price)
         {
             SetCylinders(cylinders);
             SetDeparture(departure);
@@ -27,15 +27,15 @@ namespace ProjectDealership.Models
         }
         public override double PriceCalculate()
         {
-           var price = Cylinders * 50;
+            var price = Cylinders * 50;
 
             if (Departure == "Injeção eletrônica")
             {
-             price = price + ((price /100) * 10) ;
+                price = price + ((price / 100) * 10);
             }
             return GetPrice();
         }
-               public override bool PriceValidate(double price)
+        public override bool PriceValidate(double price)
         {
             if (price > 2000)
             {
@@ -43,7 +43,7 @@ namespace ProjectDealership.Models
             }
             return false;
         }
-     
+
 
     }
 }

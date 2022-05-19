@@ -8,7 +8,7 @@ namespace ProjectDealership.xunit
            public void TestNameInThePersonClass()
         {
             var expectedName = "Gabriel";
-            var person = new Person(expectedName, "51651651", System.DateTime.Now);
+            var person = new Person(expectedName, "51651651", System.DateTime.Now.AddDays(-2));
             var currentName = person.GetName();
             Assert.Equal(expectedName, currentName);
         }
@@ -16,11 +16,11 @@ namespace ProjectDealership.xunit
            public void TestCpfInThePersonClass()
         {
             var expectedCpf = "165465146";
-            var person = new Person("Gabriel", expectedCpf, System.DateTime.Now);
+            var person = new Person("Gabriel", expectedCpf, System.DateTime.Now.AddDays(-2));
             var currentCpf = person.GetCpf();
             Assert.Equal(expectedCpf, currentCpf);
         }
-        [Fact]
+     [Fact]
            public void TestBirthdateInThePersonClass()
         {
             var expectedBirthdate = "01/01/2000";
