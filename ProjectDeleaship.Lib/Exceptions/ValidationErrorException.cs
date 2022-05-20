@@ -1,4 +1,4 @@
-namespace ProjectDealership.Exceptions
+namespace ProjectDeleaship.Lib.Exceptions
 {
     public class ValidationErrorException : Exception
     {

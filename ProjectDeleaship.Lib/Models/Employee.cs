@@ -1,4 +1,5 @@
-namespace ProjectDealership.Models
+using ProjectDeleaship.Lib.Exceptions;
+namespace ProjectDeleaship.Lib.Models
 {
     public class Employee : Person
     {

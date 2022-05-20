@@ -12,6 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ProjectDealership.Console\ProjectDealershipDodev.csproj" />
+    <ProjectReference Include="..\ProjectDeleaship.Lib\ProjectDeleaship.Lib.csproj" />
   </ItemGroup>
 
 </Project>

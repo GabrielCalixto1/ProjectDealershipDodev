@@ -1,7 +1,7 @@
 using Xunit;
-using ProjectDealership.Models;
+using ProjectDeleaship.Lib.Models;
 using System;
-using ProjectDealership.Exceptions;
+using ProjectDeleaship.Lib.Exceptions;
 
 namespace ProjectDealership.xunit
 {

@@ -1,7 +1,7 @@
-using ProjectDealership.Exceptions;
-namespace ProjectDealership.Models
+using ProjectDeleaship.Lib.Exceptions;
+namespace ProjectDeleaship.Lib.Models
 {
-    public class Client : Person
+  public class Client : Person
     {
         private string Email { get; set; }
         private string Telephone { get; set; }

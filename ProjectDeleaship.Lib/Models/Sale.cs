@@ -1,6 +1,7 @@
-namespace ProjectDealership.Models
+using ProjectDeleaship.Lib.Exceptions;
+namespace ProjectDeleaship.Lib.Models
 {
-    public class Sale
+  public class Sale
     {
         private Client Buyer { get; set; }
         private Employee Seller { get; set; }

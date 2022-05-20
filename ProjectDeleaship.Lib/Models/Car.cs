@@ -1,5 +1,7 @@
-namespace ProjectDealership.Models
+using ProjectDeleaship.Lib.Exceptions;
+namespace ProjectDeleaship.Lib.Models
 {
+
     public class Car : Vehicle
     {
         private bool AutomaticTransmission { get; set; }
@@ -34,7 +36,7 @@ namespace ProjectDealership.Models
             }
             return GetPrice();
         }
-               public override bool PriceValidate(double price)
+        public override bool PriceValidate(double price)
         {
             if (price > 5000)
             {
@@ -42,9 +44,10 @@ namespace ProjectDealership.Models
             }
             return false;
         }
-       
-    }
 
+    }
 }
+
+
 
 
